@@ -6,13 +6,14 @@ These notes were made as part of my work at KISD, Cologne, and refer to the UR3 
 ## Universal Interface via OSC/MQTT over Network
 UR offers a [bunch of possibilities to interface with the UR3](https://www.universal-robots.com/articles/ur/interface-communication/overview-of-client-interfaces/). I looked through this list, but they all had drawbacks in terms of compatibility and universality. E.g. "RTDE" required installations on the client side – some having issues about the installation which haven't been solved for years at the time. On top connecting to UR controller by default only works with Ethernet and fix IP addresses. Having e.g. microcontrollers ina WiFi network to control the robot would be tricky in this setup. So I wondered why there wasn't a universal interface that could be used to remotely control the robot from any programming language and any device via network. That's why I build a OSC/MQTT bridge to control the robot from within e.g. python, MaxMSP, Processing or others on any device in a network (Ethernet/WiFi) set up by an additional intermediate Raspberry Pi. This worked very well for my use cases and can be rebuild by following the instructions in the repository
 
+![overview_simple](https://github.com/user-attachments/assets/3d0bb874-49c5-4eaf-9d1a-42124c4c96a3)
+
 ## Fluent Real Time Movements
-A main goal of my experiments was to achieve fluent movements based on real time input coming from software that is based on sensory input. In contrast to the usual areas of application for robots in industry, where the start and end of movements and their timing are known, the challenge here is that at no point in time is it known where the robot should move to in the next moment or in the next time window. In most industry-standard applications for robots of this type, the start and end points of movements and their timing are known. Depending on the application, commands such as movej or movel are used, which allow the arm to be moved with parameters such as time, acceleration, maximum speeds, and interpolating blends between points. However, the principle is always the same: start at A, accelerate according to the parameters, slow down, and stop at point B.
-However, if the robot is supposed to follow a hand movement, for example, or move along vector paths in a smooth, uninterrupted motion, it becomes more difficult: sending many individual points would cause it to stop at each one. The challenge is that at no point is it known where the robot should move to in the next moment or in the next time window.
+A main goal of my experiments was to achieve fluent movements based on real time input coming from software that is based on sensory input. 
 
-That would be the desired result, for example.
+In most industry-standard applications for robots of this type, the start and end points of movements and their timing are known. Depending on the application, commands such as movej or movel are used, which allow the arm to be moved with parameters such as _time, acceleration, maximum speeds, and interpolating blends between points_. The principle is always the same: start at A, accelerate according to the parameters, slow down, and stop at point B.
 
-https://github.com/user-attachments/assets/9e35969c-fe55-433e-bf60-e7707e7f8ed3
+However, if the robot is supposed to follow a hand gesture or move along vector paths in a smooth, uninterrupted motion, it becomes more tricky: sending many individual points would cause it to stop at each one. We need to use the servoj to acheive this and send new points at a high enough rate. See the following example:
 
-https://github.com/user-attachments/assets/b29f4943-f9fb-4794-b477-99a299882258
+https://github.com/user-attachments/assets/54c13f17-3321-4f9e-9587-f5d41fd7ec33
 
