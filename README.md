@@ -10,7 +10,9 @@ UR offers a [bunch of possibilities to interface with the UR3](https://www.unive
 A main goal of my experiments was to achieve fluent movements based on real time input coming from software that is based on sensory input. In contrast to the usual areas of application for robots in industry, where the start and end of movements and their timing are known, the challenge here is that at no point in time is it known where the robot should move to in the next moment or in the next time window. In most industry-standard applications for robots of this type, the start and end points of movements and their timing are known. Depending on the application, commands such as movej or movel are used, which allow the arm to be moved with parameters such as time, acceleration, maximum speeds, and interpolating blends between points. However, the principle is always the same: start at A, accelerate according to the parameters, slow down, and stop at point B.
 However, if the robot is supposed to follow a hand movement, for example, or move along vector paths in a smooth, uninterrupted motion, it becomes more difficult: sending many individual points would cause it to stop at each one. The challenge is that at no point is it known where the robot should move to in the next moment or in the next time window.
 
+That would be the desired result, for example.
 
 https://github.com/user-attachments/assets/9e35969c-fe55-433e-bf60-e7707e7f8ed3
+
 https://github.com/user-attachments/assets/b29f4943-f9fb-4794-b477-99a299882258
 
