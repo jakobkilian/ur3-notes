@@ -6,8 +6,7 @@ These notes were made as part of my work at KISD, Cologne, and refer to the UR3 
 ## Universal Interface via OSC/MQTT over Network
 UR offers a [bunch of possibilities to interface with the UR3](https://www.universal-robots.com/articles/ur/interface-communication/overview-of-client-interfaces/). I looked through this list, but they all had drawbacks in terms of compatibility and universality. E.g. "RTDE" required installations on the client side – some having issues about the installation which haven't been solved for years at the time. On top connecting to UR controller by default only works with Ethernet and fix IP addresses. Having e.g. microcontrollers in a WiFi network to control the robot would be tricky in this setup. So I wondered why there wasn't a easy-to-use universal interface that could be used to remotely control the robot from any programming language and any device via network. That's why I build a OSC/MQTT bridge to control the robot from within e.g. python, MaxMSP, Processing or others on any device in a network (Ethernet/WiFi) set up by an additional intermediate Raspberry Pi. This worked very well for my use cases and can hopefully be rebuild by following the instructions in the repository
 
-![ur3-bridge-simple](https://github.com/user-attachments/assets/961a434c-9cf5-4a6f-9239-fbfabba8ddc5)
-
+![u3-bridge-simple-cut](https://github.com/user-attachments/assets/43a603ab-c351-47a9-8466-c7b3662ca425)
 
 ## Fluent Real Time Movements
 A main goal of my experiments was to achieve fluent movements based on real time input from e.g. sensors.
