@@ -1,4 +1,5 @@
 # Notes on Using UR3 for Creative Applications
+
 Controlling a Universal Robots UR3 is far from trivial, especially when it comes to performing smooth, real-time movements based on sensor input. In addition to the inherent complexity of programming crash-free 3D movement UR lacks proper documentation and sometimes provides buggy installers. 
 **In this repo I want to share notes and findings of my experiments with the UR3 to give other people an easier start.**
 These notes were made as part of my work at KISD, Cologne, and refer to the UR3 model that was available in my lab there. In principle, they can be applied to other UR models.
@@ -8,10 +9,18 @@ UR offers a [bunch of possibilities to interface with the UR3](https://www.unive
 
 ![u3-bridge-simple-cut](https://github.com/user-attachments/assets/43a603ab-c351-47a9-8466-c7b3662ca425)
 
-## Fluent Real Time Movements
+## Exemplary Applications of the Bridge
+
+<details>
+
+<summary>Fluent Real Time Movements</summary>
+
 A main goal of my experiments was to achieve fluent movements based on real time input from e.g. sensors.
 
 In most industry-standard applications for robots of this type, the start and end points of movements and their timing are known. Depending on the application, commands such as movej or movel are used, which allow the arm to be moved with parameters such as _time, acceleration, maximum speeds, and interpolating blends between points_. The principle is always the same: start at A, accelerate according to the parameters, slow down, and stop at point B. However, if the robot is supposed to follow a hand gesture or move along vector paths in a smooth, uninterrupted motion, it becomes more tricky: sending many individual points would cause it to stop at each one. We need to use the servoj to acheive this and send new points at a rate sufficient to not hear or see the "frames". In this repository I wrote up some principles I learned, in order to create something like this:
 
+
+
 https://github.com/user-attachments/assets/54c13f17-3321-4f9e-9587-f5d41fd7ec33
 
+</details>
